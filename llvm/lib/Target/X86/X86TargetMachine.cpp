@@ -63,12 +63,17 @@ static cl::opt<bool>
                      cl::desc("Enable the tile register allocation pass"),
                      cl::init(true), cl::Hidden);
 
+static cl::opt<bool> EnableConstpoolVecLoadOpt(
+    "x86-constpool-vec-load-opt", cl::init(true), cl::Hidden,
+    cl::desc("Enable X86 constant pool vector load optimization"));
+
 extern "C" LLVM_C_ABI void LLVMInitializeX86Target() {
   // Register the target.
   RegisterTargetMachine<X86TargetMachine> X(getTheX86_32Target());
   RegisterTargetMachine<X86TargetMachine> Y(getTheX86_64Target());
 
   PassRegistry &PR = *PassRegistry::getPassRegistry();
+  initializeX86BroadcastConversionPass(PR);
   initializeX86LowerAMXIntrinsicsLegacyPassPass(PR);
   initializeX86LowerAMXTypeLegacyPassPass(PR);
   initializeX86PreTileConfigLegacyPass(PR);
@@ -450,6 +455,9 @@ void X86PassConfig::addIRPasses() {
 bool X86PassConfig::addInstSelector() {
   // Install an instruction selector.
   addPass(createX86ISelDag(getX86TargetMachine(), getOptLevel()));
+
+  if (EnableConstpoolVecLoadOpt)
+    addPass(createX86BroadcastConversionPass());
 
   // For ELF, cleanup any local-dynamic TLS accesses.
   if (TM->getTargetTriple().isOSBinFormatELF() &&

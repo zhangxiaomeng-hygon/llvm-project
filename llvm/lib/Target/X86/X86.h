@@ -468,6 +468,8 @@ public:
                         MachineFunctionAnalysisManager &MFAM);
 };
 
+FunctionPass *createX86BroadcastConversionPass();
+
 FunctionPass *createX86ArgumentStackSlotLegacyPass();
 
 void initializeCompressEVEXLegacyPass(PassRegistry &);
@@ -508,6 +510,7 @@ void initializeX86SpeculativeLoadHardeningLegacyPass(PassRegistry &);
 void initializeX86SuppressAPXForRelocationLegacyPass(PassRegistry &);
 void initializeX86TileConfigLegacyPass(PassRegistry &);
 void initializeX86WinEHUnwindV2LegacyPass(PassRegistry &);
+void initializeX86BroadcastConversionPass(PassRegistry &);
 void initializeX86PreLegalizerCombinerLegacyPass(PassRegistry &);
 void initializeX86PostLegalizerCombinerLegacyPass(PassRegistry &);
 void initializeX86WinEHUnwindV3Pass(PassRegistry &);

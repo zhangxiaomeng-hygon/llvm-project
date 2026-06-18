@@ -802,6 +802,10 @@ def TuningPreferLegacySetCC
     : SubtargetFeature<"prefer-legacy-setcc", "PreferLegacySetCC", "true",
                        "Prefer to emit legacy SetCC.">;
 
+def TuningSlowBroadcast
+    : SubtargetFeature<"slow-broadcast", "HasSlowBroadcast", "true",
+    "Target has slow broadcast instructions">;
+
 //===----------------------------------------------------------------------===//
 // X86 CPU Families
 // TODO: Remove these - use general tuning features to determine codegen.
@@ -1750,7 +1754,8 @@ def ProcessorFeatures {
   list<SubtargetFeature> C864GM7Features =
     !listconcat(C864GM4Features, C864GM7AdditionalFeatures);
 
-  list<SubtargetFeature> C864GM7AdditionalTuning = [TuningBranchFusion];
+  list<SubtargetFeature> C864GM7AdditionalTuning = [TuningBranchFusion,
+                                                    TuningSlowBroadcast];
   list<SubtargetFeature> C864GM7Tuning =
     !listconcat(C864GM4Tuning, C864GM7AdditionalTuning);
 }

@@ -38,6 +38,7 @@
 ; CHECK-NEXT:       Module Verifier
 ; CHECK-NEXT:       Assignment Tracking Analysis
 ; CHECK-NEXT:       X86 DAG->DAG Instruction Selection
+; CHECK-NEXT:       X86 Broadcast Conversion
 ; CHECK-NEXT:       X86 PIC Global Base Reg Initialization
 ; CHECK-NEXT:       Argument Stack Rebase
 ; CHECK-NEXT:       Finalize ISel and expand pseudo-instructions

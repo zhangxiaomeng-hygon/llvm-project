@@ -87,6 +87,7 @@
 ; CHECK-NEXT:       Lazy Branch Probability Analysis
 ; CHECK-NEXT:       Lazy Block Frequency Analysis
 ; CHECK-NEXT:       X86 DAG->DAG Instruction Selection
+; CHECK-NEXT:       X86 Broadcast Conversion
 ; CHECK-NEXT:       MachineDominator Tree Construction
 ; CHECK-NEXT:       Local Dynamic TLS Access Clean-up
 ; CHECK-NEXT:       X86 PIC Global Base Reg Initialization

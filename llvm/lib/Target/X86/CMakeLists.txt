@@ -30,6 +30,7 @@ set(sources
   X86ArgumentStackSlotRebase.cpp
   X86AsmPrinter.cpp
   X86AvoidTrailingCall.cpp
+  X86BroadcastConversion.cpp
   X86CallFrameOptimization.cpp
   X86CallingConv.cpp
   X86CleanupLocalDynamicTLS.cpp
